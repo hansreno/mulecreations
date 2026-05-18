@@ -35,9 +35,9 @@ const cardId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '
     <p class="desc">{description}</p>
     <div class="product-footer">
       <div class="price-block">
-        <span class="price">${price}{isDeposit ? ' deposit' : ''}</span>
+        <span class="price">${price % 1 === 0 ? price : price.toFixed(2)}{isDeposit ? ' deposit' : ''}</span>
         {isDeposit && totalPrice && (
-          <span class="total-price">Total: ${totalPrice}</span>
+          <span class="total-price">Total: ${totalPrice % 1 === 0 ? totalPrice : totalPrice.toFixed(2)}</span>
         )}
       </div>
       {inStock
