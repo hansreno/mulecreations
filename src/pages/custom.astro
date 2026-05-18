@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
           <li>Fill out the form — the more detail, the better.</li>
           <li>Hans replies within 1–2 business days with a preview mockup and deposit link.</li>
           <li>Pay the deposit to lock in your order; balance due on completion.</li>
-          <li>Local pickup in Herriman, UT or shipping available.</li>
+          <li>Local pickup in Herriman, UT. Contact Hans about shipping.</li>
         </ol>
       </div>
 
@@ -82,29 +82,20 @@ import Footer from '../components/Footer.astro';
 
         <div id="shared" hidden>
           <div class="form-group">
-            <label for="occasion">Occasion</label>
-            <select id="occasion" name="occasion">
-              <option value="">Not specified</option>
-              <option value="Gift">Gift</option>
-              <option value="Home Decor">Home Decor</option>
-              <option value="Religious">Religious</option>
-              <option value="Anniversary">Anniversary</option>
-              <option value="Birthday">Birthday</option>
-              <option value="Christmas">Christmas</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
             <label for="neededBy">Needed by (optional)</label>
             <input type="date" id="neededBy" name="neededBy" />
           </div>
-          <div class="form-group">
+          <div class="form-group" id="fulfillment-group">
             <label for="fulfillment">Pickup or shipping? <span aria-hidden="true">*</span></label>
             <select id="fulfillment" name="fulfillment" required aria-required="true">
               <option value="Local pickup (Herriman, UT)">Local pickup — Herriman, UT</option>
               <option value="Shipping">I need it shipped</option>
             </select>
           </div>
+          <p class="pickup-only-note" id="pickup-only-note" hidden>
+            Local pickup in Herriman, UT. Tree of Life orders are not available for shipping.
+          </p>
+          <input type="hidden" id="fulfillment-hidden" name="fulfillment" value="Local pickup (Herriman, UT)" disabled />
           <div class="form-group">
             <label for="customerName">Your name <span aria-hidden="true">*</span></label>
             <input type="text" id="customerName" name="name" required aria-required="true" autocomplete="name" />
@@ -167,6 +158,7 @@ import Footer from '../components/Footer.astro';
   .form-status.success { color: #4caf50; }
   .form-status.error { color: #f44336; }
   #submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .pickup-only-note { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
 </style>
 
 <script>
@@ -182,6 +174,11 @@ import Footer from '../components/Footer.astro';
     'Personalized Sign': 'fields-sign',
     'Other': 'fields-other',
   };
+
+  const fulfillmentGroup = document.getElementById('fulfillment-group') as HTMLDivElement;
+  const fulfillmentSelect = document.getElementById('fulfillment') as HTMLSelectElement;
+  const fulfillmentHidden = document.getElementById('fulfillment-hidden') as HTMLInputElement;
+  const pickupOnlyNote = document.getElementById('pickup-only-note') as HTMLParagraphElement;
 
   function showFields(itemType: string) {
     Object.values(conditionalMap).forEach(id => {
@@ -199,6 +196,13 @@ import Footer from '../components/Footer.astro';
       }
     }
     if (shared) shared.hidden = !itemType;
+
+    // Tree of Life: local pickup only
+    const pickupOnly = itemType === 'Tree of Life';
+    if (fulfillmentGroup) fulfillmentGroup.hidden = pickupOnly;
+    if (fulfillmentSelect) fulfillmentSelect.disabled = pickupOnly;
+    if (fulfillmentHidden) fulfillmentHidden.disabled = !pickupOnly;
+    if (pickupOnlyNote) pickupOnlyNote.hidden = !pickupOnly;
   }
 
   itemTypeSelect?.addEventListener('change', () => showFields(itemTypeSelect.value));
@@ -235,7 +239,7 @@ import Footer from '../components/Footer.astro';
         throw new Error(json.error || 'Submission failed');
       }
     } catch {
-      formStatus.textContent = 'Something went wrong. Please try again or email orders@mulecreations.com directly.';
+      formStatus.textContent = 'Something went wrong. Please try again or email renocreationsutah@gmail.com directly.';
       formStatus.className = 'form-status error';
       submitBtn.disabled = false;
     }
