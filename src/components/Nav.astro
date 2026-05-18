@@ -1,0 +1,92 @@
+---
+const navLinks = [
+  { href: '/shop', label: 'Shop' },
+  { href: '/custom', label: 'Custom Orders' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/about', label: 'About' },
+];
+const currentPath = Astro.url.pathname;
+---
+<nav class="site-nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/images/logo/mulecreations.png" alt="Mule Creations" height="48" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a href={href} class:list={['nav-link', { active: currentPath.startsWith(href) }]}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .site-nav {
+    background-color: #111;
+    border-bottom: 2px solid var(--color-accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 2rem;
+  }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-links { display: flex; list-style: none; gap: 2rem; }
+  .nav-link {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--color-accent); }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background-color: var(--color-text); }
+  @media (max-width: 640px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background-color: #111;
+      border-bottom: 2px solid var(--color-accent);
+      padding: 1rem 0;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li a { display: block; padding: 0.75rem 1.5rem; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const links = document.querySelector('#nav-links') as HTMLUListElement;
+  toggle?.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
