@@ -5,7 +5,8 @@ import Footer from '../components/Footer.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { getCollection } from 'astro:content';
 
-const allProducts = await getCollection('products');
+const allProductsRaw = await getCollection('products');
+const allProducts = allProductsRaw.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 const categories = ['All', ...new Set(allProducts.map(p => p.data.category))];
 ---
 <BaseLayout title="Shop" description="Browse ready-made handcrafted pieces — signs, plaques, Trees of Life, and more.">

@@ -5,7 +5,9 @@ import Footer from '../components/Footer.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { getCollection } from 'astro:content';
 
-const featured = (await getCollection('products', ({ data }) => data.featured && data.inStock)).slice(0, 4);
+const featured = (await getCollection('products', ({ data }) => data.featured && data.inStock))
+  .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
+  .slice(0, 4);
 ---
 <BaseLayout title="Home" description="Handcrafted woodwork and CNC creations from Herriman, Utah.">
   <Nav slot="nav" />
@@ -17,7 +19,7 @@ const featured = (await getCollection('products', ({ data }) => data.featured &&
       </div>
       <div class="hero-text">
         <h1>Mule Creations</h1>
-        <p class="tagline">You can lead 'em to the shop.<br />The rest speaks for itself.</p>
+        <p class="tagline">Stubborn about quality.<br />Every single time.</p>
         <p class="sub">Handcrafted woodwork and CNC creations from Herriman, Utah.</p>
         <div class="actions">
           <a href="/shop" class="btn btn-primary">Shop Now</a>

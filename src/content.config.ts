@@ -15,6 +15,7 @@ const products = defineCollection({
     isDeposit: z.boolean().default(false),
     totalPrice: z.number().optional(),
     buttonLabel: z.string().optional(),
+    sortOrder: z.number().default(99),
   }),
 });
 
