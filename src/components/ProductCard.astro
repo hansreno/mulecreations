@@ -2,17 +2,33 @@
 interface Props {
   title: string; category: string; price: number;
   description: string; image: string; squareLink: string; inStock: boolean;
-  isDeposit?: boolean; totalPrice?: number; buttonLabel?: string;
+  isDeposit?: boolean; totalPrice?: number; buttonLabel?: string; gallery?: string[];
 }
-const { title, category, price, description, image, squareLink, inStock, isDeposit = false, totalPrice, buttonLabel } = Astro.props;
+const { title, category, price, description, image, squareLink, inStock, isDeposit = false, totalPrice, buttonLabel, gallery } = Astro.props;
 const btnLabel = buttonLabel ?? (isDeposit ? 'Pay Deposit' : 'Buy Now');
+const allImages = [image, ...(gallery ?? [])];
+const cardId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 ---
 <article class="product-card">
   <div class="product-image">
-    <img src={image} alt={title} loading="lazy" />
+    <img src={image} alt={title} loading="lazy" id={`main-${cardId}`} />
     {!inStock && <span class="badge sold-out">Sold Out</span>}
     {inStock && isDeposit && <span class="badge deposit">Deposit</span>}
   </div>
+  {allImages.length > 1 && (
+    <div class="thumbnails">
+      {allImages.map((src, i) => (
+        <button
+          class:list={['thumb', { active: i === 0 }]}
+          data-card={cardId}
+          data-src={src}
+          aria-label={`View image ${i + 1}`}
+        >
+          <img src={src} alt="" loading="lazy" />
+        </button>
+      ))}
+    </div>
+  )}
   <div class="product-info">
     <span class="category">{category}</span>
     <h3>{title}</h3>
@@ -45,7 +61,7 @@ const btnLabel = buttonLabel ?? (isDeposit ? 'Pay Deposit' : 'Buy Now');
   }
   .product-card:hover { transform: translateY(-3px); }
   .product-image { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #333; }
-  .product-image img { width: 100%; height: 100%; object-fit: cover; }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.2s; }
   .badge {
     position: absolute; top: 0.75rem; right: 0.75rem;
     font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.6rem;
@@ -53,6 +69,31 @@ const btnLabel = buttonLabel ?? (isDeposit ? 'Pay Deposit' : 'Buy Now');
   }
   .sold-out { background: #555; color: var(--color-text-muted); }
   .deposit { background: var(--color-accent); color: #1a1a1a; }
+
+  .thumbnails {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.5rem 0.75rem;
+    background: #1e1e1e;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .thumbnails::-webkit-scrollbar { display: none; }
+  .thumb {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    padding: 0;
+    cursor: pointer;
+    background: #333;
+    transition: border-color 0.15s;
+  }
+  .thumb.active { border-color: var(--color-accent); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
   .product-info { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
   .category { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 600; }
   h3 { font-size: 1.1rem; }
@@ -62,3 +103,18 @@ const btnLabel = buttonLabel ?? (isDeposit ? 'Pay Deposit' : 'Buy Now');
   .price { font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-accent); font-weight: 700; }
   .total-price { font-size: 0.75rem; color: var(--color-text-muted); }
 </style>
+
+<script>
+  document.querySelectorAll('.thumbnails').forEach(strip => {
+    strip.querySelectorAll<HTMLButtonElement>('.thumb').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cardId = btn.dataset.card!;
+        const src = btn.dataset.src!;
+        const mainImg = document.getElementById(`main-${cardId}`) as HTMLImageElement;
+        if (mainImg) mainImg.src = src;
+        strip.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+</script>

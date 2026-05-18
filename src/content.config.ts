@@ -16,6 +16,7 @@ const products = defineCollection({
     totalPrice: z.number().optional(),
     buttonLabel: z.string().optional(),
     sortOrder: z.number().default(99),
+    gallery: z.array(z.string()).optional(),
   }),
 });
 
