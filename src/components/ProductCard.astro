@@ -2,9 +2,10 @@
 interface Props {
   title: string; category: string; price: number;
   description: string; image: string; squareLink: string; inStock: boolean;
-  isDeposit?: boolean; totalPrice?: number;
+  isDeposit?: boolean; totalPrice?: number; buttonLabel?: string;
 }
-const { title, category, price, description, image, squareLink, inStock, isDeposit = false, totalPrice } = Astro.props;
+const { title, category, price, description, image, squareLink, inStock, isDeposit = false, totalPrice, buttonLabel } = Astro.props;
+const btnLabel = buttonLabel ?? (isDeposit ? 'Pay Deposit' : 'Buy Now');
 ---
 <article class="product-card">
   <div class="product-image">
@@ -25,7 +26,7 @@ const { title, category, price, description, image, squareLink, inStock, isDepos
       </div>
       {inStock
         ? <a href={squareLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            {isDeposit ? 'Pay Deposit' : 'Buy Now'}
+            {btnLabel}
           </a>
         : <span class="btn btn-outline" aria-disabled="true">Sold Out</span>
       }

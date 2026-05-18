@@ -14,6 +14,7 @@ const products = defineCollection({
     featured: z.boolean().default(false),
     isDeposit: z.boolean().default(false),
     totalPrice: z.number().optional(),
+    buttonLabel: z.string().optional(),
   }),
 });
 
