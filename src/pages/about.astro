@@ -6,81 +6,138 @@ import Footer from '../components/Footer.astro';
 <BaseLayout title="About" description="The story behind Mule Creations — handcrafted woodwork from Herriman, Utah.">
   <Nav slot="nav" />
   <section>
-    <div class="container about-inner">
-      <div class="about-logo">
-        <img src="/images/logo/TheGuidedMule.svg" alt="The Guided Mule illustration" width="280" height="140" />
+    <div class="container">
+
+      <div class="about-hero">
+        <img src="/images/HansReno.jpg" alt="Hans Reno in Alaska" class="hero-photo" />
+        <div class="about-hero-text">
+          <h1>The Mule Story</h1>
+          <p>
+            The nickname wasn't given to me because I'm stubborn — it's because I carry everything.
+            My buddies have been frustrated with me more than once for showing up with way too much gear,
+            too many gadgets, too many things I built or tinkered together. I'm the guy who opens his
+            backpack in the middle of the wilderness and pulls out a watermelon. Just because I can.
+            Just because I'm the Mule.
+          </p>
+          <p>
+            Over the years I've done probably hundreds of trips with my crew — out of the country, crazy
+            backpacking trips through the mountain west, and ten unguided fishing trips to Alaska. These
+            are the adventures where Mule Creations was born. Everything I build out in the field, I
+            eventually build better in the shop.
+          </p>
+          <p>
+            We document a lot of it on our YouTube channel,
+            <a href="https://www.youtube.com/@teamunguided1883" target="_blank" rel="noopener noreferrer">Team Unguided</a>
+            — come see what hauling a watermelon into the backcountry actually looks like.
+          </p>
+        </div>
       </div>
-      <div class="about-content">
-        <h1>The Mule Story</h1>
-        <p>
-          The nickname wasn't given to me because I'm stubborn — it's because I carry everything.
-          My buddies have been frustrated with me more than once for showing up with way too much gear,
-          too many gadgets, too many things I built or tinkered together. I'm the guy who opens his
-          backpack in the middle of the wilderness and pulls out a watermelon. Just because I can.
-          Just because I'm the Mule.
-        </p>
-        <p>
-          Over the years I've done probably hundreds of trips with my crew — out of the country, crazy
-          backpacking trips through the mountain west, and ten unguided fishing trips to Alaska. These
-          are the adventures where Mule Creations was born. Everything I build out in the field, I
-          eventually build better in the shop.
-        </p>
-        <p>
-          We document a lot of it on our YouTube channel,
-          <a href="https://www.youtube.com/@teamunguided1883" target="_blank" rel="noopener noreferrer">Team Unguided</a>
-          — come see what hauling a watermelon into the backcountry actually looks like.
-        </p>
 
-        <h2>Where It Started</h2>
-        <p>
-          My dad was a builder. He had every tool you can imagine — chop saws, drill presses, welders,
-          big power tools — and when I was little I got into all of them. We even found some old gunpowder
-          once. That's the kind of childhood that either scares you away from tools forever or hooks you for
-          life. For me, it was the latter.
-        </p>
-        <p>
-          Dad passed away in 2015. He left me the spark. Everything I build carries a little bit of that.
-        </p>
-
-        <h2>The Work</h2>
-        <p>
-          Over the years I've built up a serious shop — table saw, routers, Milwaukee everything.
-          A few years back I added a CNC machine with a laser attachment, diamond engraving bits,
-          and Vectric Aspire software. More recently, a Bambu X1 Carbon 3D printer joined the crew.
-        </p>
-        <p>
-          The CNC opened up a whole new world. Trees of Life are what people ask for most — every one
-          is personalized, every one is different. I also make signs, religious plaques, storage pieces,
-          pet tags, and display stands. If you can dream it up, there's a good chance I can build it.
-        </p>
-        <p>
-          Building things is just how my brain works. Off-grid solar systems, furniture, e-bike
-          conversions, custom kayak seat contraptions for Alaska fishing trips — I love figuring things
-          out from scratch. Mule Creations is where that same energy goes into things you can hang on
-          your wall, give as a gift, or pass down.
-        </p>
-
-        <h2>The Logo</h2>
-        <p>
-          The logo says it all: you can lead a mule to water, but you can't make him drink.
-          Everything here is made on my terms — stubborn about quality, stubborn about craft.
-        </p>
-        <h2>Where to Find Me</h2>
-        <p>
-          Based in Herriman, Utah. Local pickup available. I also ship — just ask.
-          For custom work, <a href="/custom">start here</a>.
-        </p>
+      <div class="about-photos">
+        <figure>
+          <img src="/images/ImInMiddle.jpg" alt="Hans and the crew in Alaska" />
+          <figcaption>The crew — Alaska</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/Mule.jpg" alt="Hans with an actual mule" />
+          <figcaption>Me and my spirit animal</figcaption>
+        </figure>
       </div>
+
+      <div class="about-sections">
+        <div class="about-content">
+
+          <h2>Where It Started</h2>
+          <p>
+            My dad was a builder. He had every tool you can imagine — chop saws, drill presses, welders,
+            big power tools — and when I was little I got into all of them. We even found some old gunpowder
+            once. That's the kind of childhood that either scares you away from tools forever or hooks you for
+            life. For me, it was the latter.
+          </p>
+          <p>
+            Dad passed away in 2015. He left me the spark. Everything I build carries a little bit of that.
+          </p>
+
+          <h2>The Work</h2>
+          <p>
+            Over the years I've built up a serious shop — table saw, routers, Milwaukee everything.
+            A few years back I added a CNC machine with a laser attachment, diamond engraving bits,
+            and Vectric Aspire software. More recently, a Bambu X1 Carbon 3D printer joined the crew.
+          </p>
+          <p>
+            The CNC opened up a whole new world. Trees of Life are what people ask for most — every one
+            is personalized, every one is different. I also make signs, religious plaques, storage pieces,
+            pet tags, and display stands. If you can dream it up, there's a good chance I can build it.
+          </p>
+          <p>
+            Building things is just how my brain works. Off-grid solar systems, furniture, e-bike
+            conversions, custom kayak seat contraptions for Alaska fishing trips — I love figuring things
+            out from scratch. Mule Creations is where that same energy goes into things you can hang on
+            your wall, give as a gift, or pass down.
+          </p>
+
+          <h2>The Family</h2>
+          <p>
+            I have seven kids. Six of them are out of the house doing their thing — the seventh is 13
+            and keeping me young. They're my world. Even when I'm fishing. Especially when I'm fishing.
+          </p>
+          <p>
+            In June 2026 I'll be a grandfather for the first time. Which means I now have a very good
+            excuse to build even more things.
+          </p>
+
+          <h2>The Logo</h2>
+          <p>
+            The logo says it all: you can lead a mule to water, but you can't make him drink.
+            Everything here is made on my terms — stubborn about quality, stubborn about craft.
+          </p>
+
+          <h2>Where to Find Me</h2>
+          <p>
+            Based in Herriman, Utah. Local pickup available. I also ship — just ask.
+            For custom work, <a href="/custom">start here</a>.
+          </p>
+
+        </div>
+      </div>
+
     </div>
   </section>
   <Footer slot="footer" />
 </BaseLayout>
 
 <style>
-  .about-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
-  .about-logo img { width: 100%; max-width: 280px; height: auto; }
-  .about-content h1 { margin-bottom: 1.5rem; }
+  .about-hero {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+  .hero-photo {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  .about-hero-text h1 { margin-bottom: 1.5rem; }
+  .about-hero-text p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1rem; }
+
+  .about-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .about-photos figure { margin: 0; }
+  .about-photos img { width: 100%; border-radius: 8px; object-fit: cover; aspect-ratio: 4/3; }
+  .about-photos figcaption { color: var(--color-text-muted); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic; }
+
+  .about-content { max-width: 700px; }
   .about-content h2 { margin-top: 2rem; margin-bottom: 0.75rem; color: var(--color-accent); font-size: 1.25rem; }
-  .about-content p { color: var(--color-text-muted); line-height: 1.8; }
-  @media (max-width: 640px) { .about-inner { grid-template-columns: 1fr; gap: 2rem; } }
+  .about-content p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 0.75rem; }
+
+  @media (max-width: 768px) {
+    .about-hero { grid-template-columns: 1fr; }
+    .about-photos { grid-template-columns: 1fr; }
+  }
 </style>
