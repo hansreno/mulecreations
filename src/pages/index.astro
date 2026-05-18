@@ -13,7 +13,7 @@ const featured = (await getCollection('products', ({ data }) => data.featured &&
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-logo">
-        <img src="/images/logo/hero-logo.png" alt="Mule Creations" width="900" height="220" />
+        <img src="/images/logo/hero-logo.svg" alt="Mule Creations" />
       </div>
       <div class="hero-text">
         <h1>Mule Creations</h1>
@@ -69,7 +69,7 @@ const featured = (await getCollection('products', ({ data }) => data.featured &&
 <style>
   .hero { padding: 5rem 0; border-bottom: 1px solid #333; }
   .hero-inner { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
-  .hero-logo img { max-width: 600px; width: 100%; height: auto; }
+  .hero-logo img { max-width: 700px; width: 100%; height: auto; }
   .hero-text { flex: 1; min-width: 280px; }
   .hero-text h1 { color: var(--color-accent); margin-bottom: 0.5rem; }
   .tagline { font-style: italic; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 1rem; }
