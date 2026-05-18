@@ -1,17 +1,85 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { getCollection } from 'astro:content';
 
+const featured = (await getCollection('products', ({ data }) => data.featured && data.inStock)).slice(0, 4);
 ---
+<BaseLayout title="Home" description="Handcrafted woodwork and CNC creations from Herriman, Utah.">
+  <Nav slot="nav" />
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-logo">
+        <img src="/images/logo/mulecreations.png" alt="Mule Creations" width="400" height="88" />
+      </div>
+      <div class="hero-text">
+        <h1>Mule Creations</h1>
+        <p class="tagline">You can lead a mule to water,<br />but you can't make him drink.</p>
+        <p class="sub">Handcrafted woodwork and CNC creations from Herriman, Utah.</p>
+        <div class="actions">
+          <a href="/shop" class="btn btn-primary">Shop Now</a>
+          <a href="/custom" class="btn btn-outline">Request Custom Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {featured.length > 0 && (
+    <section class="featured">
+      <div class="container">
+        <h2>Featured Work</h2>
+        <div class="grid">
+          {featured.map((p) => (
+            <ProductCard title={p.data.title} category={p.data.category} price={p.data.price}
+              description={p.data.description} image={p.data.image}
+              squareLink={p.data.squareLink} inStock={p.data.inStock} />
+          ))}
+        </div>
+        <div style="text-align:center;margin-top:2rem">
+          <a href="/shop" class="btn btn-outline">View All Items</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>Something Specific in Mind?</h2>
+        <p>Every piece is made by hand. If you don't see it, let's build it.</p>
+      </div>
+      <a href="/custom" class="btn btn-primary">Request Custom Work</a>
+    </div>
+  </section>
+
+  <section class="who">
+    <div class="container" style="max-width:700px">
+      <h2>Who Is Mule?</h2>
+      <p>"Mule" is the nickname I've carried for years among my fishing buddies on trips to Alaska. I build things my way, with my hands, on my terms.</p>
+      <a href="/about" class="btn btn-outline" style="margin-top:1.5rem;display:inline-block">Read the Story</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .hero { padding: 5rem 0; border-bottom: 1px solid #333; }
+  .hero-inner { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+  .hero-logo img { max-width: 400px; width: 100%; height: auto; }
+  .hero-text { flex: 1; min-width: 280px; }
+  .hero-text h1 { color: var(--color-accent); margin-bottom: 0.5rem; }
+  .tagline { font-style: italic; color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 1rem; }
+  .sub { color: var(--color-text-muted); margin-bottom: 2rem; }
+  .actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .cta-band { background-color: var(--color-card); border-top: 1px solid #333; border-bottom: 1px solid #333; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .cta-inner h2 { margin-bottom: 0.5rem; }
+  .cta-inner p { color: var(--color-text-muted); }
+  .who h2 { margin-bottom: 1rem; }
+  .who p { color: var(--color-text-muted); font-size: 1.05rem; }
+</style>
