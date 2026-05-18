@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Custom Orders" description="Request a custom handcrafted piece from Mule Creations.">
+  <Nav slot="nav" />
+  <section>
+    <div class="container">
+      <h1>Custom Orders</h1>
+      <div class="process">
+        <p>Here's how it works:</p>
+        <ol>
+          <li>Fill out the form — the more detail, the better.</li>
+          <li>Hans replies within 1–2 business days with a quote.</li>
+          <li>A deposit is required to begin; balance due on completion.</li>
+          <li>Local pickup in Herriman, UT or shipping available.</li>
+        </ol>
+      </div>
+
+      <form id="order-form" class="order-form" novalidate>
+
+        <div class="form-group">
+          <label for="itemType">What would you like made? <span aria-hidden="true">*</span></label>
+          <select id="itemType" name="itemType" required>
+            <option value="">— Select an item type —</option>
+            <option value="Tree of Life">Tree of Life</option>
+            <option value="Religious / Scripture Plaque">Religious / Scripture Plaque</option>
+            <option value="Personalized Sign">Personalized Sign</option>
+            <option value="Other">Something Else</option>
+          </select>
+        </div>
+
+        <div class="conditional" id="fields-tree" hidden>
+          <div class="form-group">
+            <label for="tol-text">Personalization text <span aria-hidden="true">*</span></label>
+            <textarea id="tol-text" name="personalizationText" rows="3"
+              placeholder="Names, dates, or quotes to appear around the tree"></textarea>
+          </div>
+        </div>
+
+        <div class="conditional" id="fields-plaque" hidden>
+          <div class="form-group">
+            <label for="plaque-text">Scripture reference or text <span aria-hidden="true">*</span></label>
+            <textarea id="plaque-text" name="scriptureText" rows="3"
+              placeholder="e.g. Doctrine and Covenants 6:36, or the full scripture"></textarea>
+          </div>
+        </div>
+
+        <div class="conditional" id="fields-sign" hidden>
+          <div class="form-group">
+            <label for="sign-text">Text to display <span aria-hidden="true">*</span></label>
+            <textarea id="sign-text" name="signText" rows="3" placeholder="What should the sign say?"></textarea>
+          </div>
+        </div>
+
+        <div class="conditional" id="fields-other" hidden>
+          <div class="form-group">
+            <label for="other-desc">Describe what you're looking for <span aria-hidden="true">*</span></label>
+            <textarea id="other-desc" name="otherDescription" rows="4"
+              placeholder="The more detail the better"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget range</label>
+            <select id="budget" name="budget">
+              <option value="">Not sure</option>
+              <option value="Under $50">Under $50</option>
+              <option value="$50–$100">$50–$100</option>
+              <option value="$100–$200">$100–$200</option>
+              <option value="$200+">$200+</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="shared" hidden>
+          <div class="form-group">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion">
+              <option value="">Not specified</option>
+              <option value="Gift">Gift</option>
+              <option value="Home Decor">Home Decor</option>
+              <option value="Religious">Religious</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Christmas">Christmas</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="neededBy">Needed by (optional)</label>
+            <input type="date" id="neededBy" name="neededBy" />
+          </div>
+          <div class="form-group">
+            <label for="fulfillment">Pickup or shipping? <span aria-hidden="true">*</span></label>
+            <select id="fulfillment" name="fulfillment" required>
+              <option value="Local pickup (Herriman, UT)">Local pickup — Herriman, UT</option>
+              <option value="Shipping">I need it shipped</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="customerName">Your name <span aria-hidden="true">*</span></label>
+            <input type="text" id="customerName" name="name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="customerEmail">Your email <span aria-hidden="true">*</span></label>
+            <input type="email" id="customerEmail" name="email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="notes">Additional details</label>
+            <textarea id="notes" name="notes" rows="3"
+              placeholder="Non-standard size requests, special requirements, etc."></textarea>
+          </div>
+
+          <div class="form-status" id="form-status" aria-live="polite"></div>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Send Request</button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  h1 { margin-bottom: 1.5rem; }
+  .process {
+    background-color: var(--color-card);
+    border-left: 3px solid var(--color-accent);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 2.5rem;
+  }
+  .process p { font-weight: 600; margin-bottom: 0.5rem; }
+  .process ol { color: var(--color-text-muted); padding-left: 1.25rem; line-height: 2; }
+  .order-form { max-width: 600px; display: flex; flex-direction: column; gap: 1.25rem; }
+  .conditional { display: flex; flex-direction: column; gap: 1.25rem; }
+  #shared { display: flex; flex-direction: column; gap: 1.25rem; }
+  #shared[hidden] { display: none; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-weight: 600; font-size: 0.9rem; }
+  .form-group label span { color: var(--color-accent); }
+  .form-group input, .form-group select, .form-group textarea {
+    background-color: var(--color-card); border: 1px solid #444; border-radius: var(--radius);
+    color: var(--color-text); font-family: var(--font-body); font-size: 0.95rem;
+    padding: 0.65rem 0.9rem; width: 100%; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: 2px solid var(--color-accent); outline-offset: 0; border-color: var(--color-accent);
+  }
+  .form-group select option { background-color: #2a2a2a; }
+  .form-status { min-height: 1.5rem; font-size: 0.95rem; }
+  .form-status.success { color: #4caf50; }
+  .form-status.error { color: #f44336; }
+  #submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+</style>
+
+<script>
+  const form = document.getElementById('order-form') as HTMLFormElement;
+  const itemTypeSelect = document.getElementById('itemType') as HTMLSelectElement;
+  const shared = document.getElementById('shared') as HTMLDivElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const formStatus = document.getElementById('form-status') as HTMLDivElement;
+
+  const conditionalMap: Record<string, string> = {
+    'Tree of Life': 'fields-tree',
+    'Religious / Scripture Plaque': 'fields-plaque',
+    'Personalized Sign': 'fields-sign',
+    'Other': 'fields-other',
+  };
+
+  function showFields(itemType: string) {
+    Object.values(conditionalMap).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.hidden = true;
+    });
+    if (conditionalMap[itemType]) {
+      const el = document.getElementById(conditionalMap[itemType]);
+      if (el) el.hidden = false;
+    }
+    shared.hidden = !itemType;
+  }
+
+  itemTypeSelect?.addEventListener('change', () => showFields(itemTypeSelect.value));
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn || !formStatus) return;
+    submitBtn.disabled = true;
+    formStatus.textContent = 'Sending…';
+    formStatus.className = 'form-status';
+
+    try {
+      const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) });
+      const json = await res.json();
+      if (res.ok && json.success) {
+        formStatus.textContent = 'Got it! Hans will be in touch within 1–2 business days.';
+        formStatus.className = 'form-status success';
+        form.reset();
+        showFields('');
+      } else {
+        throw new Error(json.error || 'Submission failed');
+      }
+    } catch {
+      formStatus.textContent = 'Something went wrong. Please try again or contact directly.';
+      formStatus.className = 'form-status error';
+      submitBtn.disabled = false;
+    }
+  });
+</script>
