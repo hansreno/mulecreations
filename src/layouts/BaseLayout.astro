@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Handcrafted woodwork and CNC creations from Herriman, Utah.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | Mule Creations</title>
+    <link rel="icon" type="image/png" href="/images/logo/mulecreations.png" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <slot name="nav" />
+    <main><slot /></main>
+    <slot name="footer" />
+  </body>
+</html>
