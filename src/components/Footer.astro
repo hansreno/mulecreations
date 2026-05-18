@@ -1,0 +1,47 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/images/logo/TheGuidedMule.svg" alt="Mule Creations" height="80" />
+      <p class="tagline">You can lead a mule to water,<br />but you can't make him drink.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <ul>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/custom">Custom Orders</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {new Date().getFullYear()} Mule Creations / Reno Creations. Herriman, Utah.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: #111;
+    border-top: 2px solid var(--color-accent);
+    padding-top: 3rem;
+    margin-top: auto;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+  }
+  .footer-brand img { height: 80px; width: auto; margin-bottom: 1rem; }
+  .tagline { color: var(--color-text-muted); font-style: italic; font-size: 0.9rem; }
+  nav ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  nav a { color: var(--color-text-muted); font-size: 0.9rem; transition: color 0.2s; }
+  nav a:hover { color: var(--color-accent); }
+  .footer-bottom {
+    border-top: 1px solid #333;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  .footer-bottom p { color: var(--color-text-muted); font-size: 0.8rem; }
+</style>
