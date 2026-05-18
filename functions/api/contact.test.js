@@ -1,15 +1,5 @@
 import { describe, it, expect } from 'vitest';
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function buildEmailBody(fields) {
-  return fields
-    .filter(([, value]) => value && value.toString().trim())
-    .map(([label, value]) => `${label}: ${value}`)
-    .join('\n');
-}
+import { isValidEmail, buildEmailBody } from './contact.js';
 
 describe('isValidEmail', () => {
   it('accepts a valid email', () => {

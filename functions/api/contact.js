@@ -1,6 +1,11 @@
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  if (!env.RESEND_API_KEY || !env.CONTACT_EMAIL) {
+    console.error('Missing required environment variables: RESEND_API_KEY or CONTACT_EMAIL');
+    return jsonResponse({ error: 'Server configuration error. Please contact us directly.' }, 500);
+  }
+
   let formData;
   try {
     formData = await request.formData();
@@ -36,6 +41,8 @@ export async function onRequestPost(context) {
     ['Notes', formData.get('notes')],
   ]);
 
+  const safeItemType = itemType.replace(/[\r\n]/g, ' ');
+  const safeName = name.replace(/[\r\n]/g, ' ');
   const emailText = `New custom order request from MuleCreations.com\n\n${body}\n\n---\nReply to this email to respond to the customer.`;
 
   const resendRes = await fetch('https://api.resend.com/emails', {
@@ -48,7 +55,7 @@ export async function onRequestPost(context) {
       from: 'orders@mulecreations.com',
       to: env.CONTACT_EMAIL,
       reply_to: email,
-      subject: `Custom Order: ${itemType} — ${name}`,
+      subject: `Custom Order: ${safeItemType} — ${safeName}`,
       text: emailText,
     }),
   });
@@ -78,3 +85,5 @@ function buildEmailBody(fields) {
     .map(([label, value]) => `${label}: ${value}`)
     .join('\n');
 }
+
+export { isValidEmail, buildEmailBody };
