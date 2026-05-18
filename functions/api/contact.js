@@ -44,7 +44,7 @@ export async function onRequestPost(context) {
 
   const safeItemType = itemType.replace(/[\r\n]/g, ' ');
   const safeName = name.replace(/[\r\n]/g, ' ');
-  const emailText = `New custom order request from MuleCreations.com\n\n${body}\n\n---\nReply to this email to respond to the customer.`;
+  const emailText = `New custom order request from MuleCreations.com\n\n${body}`;
 
   const resendRes = await fetch('https://api.resend.com/emails', {
     method: 'POST',
