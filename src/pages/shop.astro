@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProducts = await getCollection('products');
+const categories = ['All', ...new Set(allProducts.map(p => p.data.category))];
+---
+<BaseLayout title="Shop" description="Browse ready-made handcrafted pieces — signs, plaques, Trees of Life, and more.">
+  <Nav slot="nav" />
+  <section>
+    <div class="container">
+      <h1>Shop</h1>
+      <p class="sub">Local pickup in Herriman, UT. Shipping available — contact for rates.</p>
+
+      <div class="filter-bar" id="filter-bar">
+        {categories.map(cat => (
+          <button class:list={['filter-btn', { active: cat === 'All' }]} data-category={cat}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {allProducts.length === 0
+        ? <p class="empty">New items coming soon. <a href="/custom">Request custom work.</a></p>
+        : (
+          <div class="grid" id="product-grid">
+            {allProducts.map((p) => (
+              <div class="item" data-category={p.data.category}>
+                <ProductCard title={p.data.title} category={p.data.category} price={p.data.price}
+                  description={p.data.description} image={p.data.image}
+                  squareLink={p.data.squareLink} inStock={p.data.inStock} />
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  h1 { margin-bottom: 0.5rem; }
+  .sub { color: var(--color-text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .filter-btn {
+    padding: 0.4rem 1rem; border-radius: 999px;
+    background-color: var(--color-card); border: 1px solid #444;
+    color: var(--color-text-muted); font-size: 0.85rem; cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    font-family: var(--font-body);
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background-color: var(--color-accent); border-color: var(--color-accent); color: #1a1a1a;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+  .item[hidden] { display: none; }
+  .empty { color: var(--color-text-muted); font-size: 1.1rem; padding: 3rem 0; }
+</style>
+
+<script>
+  const bar = document.getElementById('filter-bar');
+  const grid = document.getElementById('product-grid');
+  bar?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.filter-btn') as HTMLButtonElement | null;
+    if (!btn) return;
+    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const sel = btn.dataset.category;
+    grid?.querySelectorAll<HTMLElement>('.item').forEach(item => {
+      item.hidden = sel !== 'All' && item.dataset.category !== sel;
+    });
+  });
+</script>
