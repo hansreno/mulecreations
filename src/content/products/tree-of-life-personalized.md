@@ -1,8 +1,8 @@
 ---
 title: "Personalized Tree of Life"
 category: "Plaques & Signs"
-price: 65
-description: "CNC-carved Tree of Life on HDF. Personalize the surrounding text — names, dates, or a meaningful phrase. A customer favorite."
+price: 90
+description: "50% deposit to begin. CNC-carved Tree of Life on HDF — you choose the text on top and bottom. Total price $180, balance of $90 due on completion. Ready in 1–2 weeks."
 image: "/images/products/tree-of-life.jpg"
 squareLink: "https://square.link/u/REPLACE_WITH_REAL_LINK"
 inStock: true
