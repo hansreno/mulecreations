@@ -10,9 +10,9 @@ const currentPath = Astro.url.pathname;
 <nav class="site-nav">
   <div class="container nav-inner">
     <a href="/" class="nav-logo">
-      <img src="/images/logo/mulecreations.png" alt="Mule Creations" height="48" />
+      <img src="/images/logo/mulecreations.png" alt="Mule Creations" width="220" height="48" />
     </a>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="nav-links">
@@ -34,6 +34,7 @@ const currentPath = Astro.url.pathname;
     position: sticky;
     top: 0;
     z-index: 100;
+    isolation: isolate;
   }
   .nav-inner {
     display: flex;
@@ -41,6 +42,7 @@ const currentPath = Astro.url.pathname;
     justify-content: space-between;
     height: 64px;
     gap: 2rem;
+    position: relative;
   }
   .nav-logo img { height: 48px; width: auto; }
   .nav-links { display: flex; list-style: none; gap: 2rem; }
@@ -86,7 +88,7 @@ const currentPath = Astro.url.pathname;
   const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
   const links = document.querySelector('#nav-links') as HTMLUListElement;
   toggle?.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('open');
+    const isOpen = links?.classList.toggle('open') ?? false;
     toggle.setAttribute('aria-expanded', String(isOpen));
   });
 </script>

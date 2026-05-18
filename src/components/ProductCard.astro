@@ -17,7 +17,7 @@ const { title, category, price, description, image, squareLink, inStock } = Astr
     <div class="product-footer">
       <span class="price">${price}</span>
       {inStock
-        ? <a href={squareLink} class="btn btn-primary" target="_blank" rel="noopener">Buy Now</a>
+        ? <a href={squareLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">Buy Now</a>
         : <span class="btn btn-outline" aria-disabled="true">Sold Out</span>
       }
     </div>
