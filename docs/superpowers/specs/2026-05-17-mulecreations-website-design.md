@@ -28,7 +28,7 @@ MuleCreations.com is a woodworking and CNC creation business website for Hans Re
 
 ### 1. Home
 - **Hero:** Full-width section with mule logo large, tagline, and two CTA buttons ("Shop Now" → /shop, "Request Custom Work" → /custom)
-- **Tagline:** *"You can lead a mule to water — but you can't make him work cheap."* (exact wording to be finalized by owner)
+- **Tagline:** *"You can lead a mule to water, but you can't make him drink."* — the traditional saying, as it appears on the logo artwork
 - **Featured Products:** 3–4 highlighted items from the shop (manually curated)
 - **"Who Is Mule?" snippet:** 2–3 sentences teasing the About story with a link to read more
 - **CTA banner:** "Something specific in mind? Let's build it." → /custom
@@ -57,32 +57,29 @@ MuleCreations.com is a woodworking and CNC creation business website for Hans Re
 
 **Religious / Scripture Plaque:**
   1. Scripture reference or text (textarea)
-  2. Size preference (text — optional, e.g., "roughly 12×16")
-  3. Occasion (select)
-  4. Needed by date (optional)
-  5. Pickup or shipping?
-  6. Your name + email
-  7. Additional details
+  2. Occasion (select)
+  3. Needed by date (optional)
+  4. Pickup or shipping?
+  5. Your name + email
+  6. Additional details (textarea — including here if a non-standard size is wanted; Hans will follow up with a quote if so)
 
 **Personalized Sign:**
   1. Text to display (textarea)
-  2. Approximate size (text — optional)
-  3. Occasion (select)
-  4. Needed by date (optional)
-  5. Pickup or shipping?
-  6. Your name + email
-  7. Additional details
+  2. Occasion (select)
+  3. Needed by date (optional)
+  4. Pickup or shipping?
+  5. Your name + email
+  6. Additional details (textarea — including here if a non-standard size is wanted; Hans will follow up with a quote if so)
 
 **Everything Else (Storage, Stands, Pet Tags, Other):**
   1. Describe what you're looking for (textarea)
-  2. Approximate size / dimensions (text — optional)
-  3. Occasion (select)
-  4. Budget range (select: Under $50, $50–$100, $100–$200, $200+, Not sure)
-  5. Needed by date (optional)
-  6. Pickup or shipping?
-  7. Your name + email
-  8. Phone number (optional)
-  9. Additional details
+  2. Occasion (select)
+  3. Budget range (select: Under $50, $50–$100, $100–$200, $200+, Not sure)
+  4. Needed by date (optional)
+  5. Pickup or shipping?
+  6. Your name + email
+  7. Phone number (optional)
+  8. Additional details (textarea — including here if a non-standard size or material is wanted; Hans will follow up with a quote)
 
 - **Adding new product questionnaires:** Each questionnaire is defined in a config file — as new product types are developed, a new form config can be added without rebuilding the page
 - On submit: Cloudflare Worker formats answers into a structured email and delivers to Hans's inbox
@@ -216,7 +213,7 @@ Adding a new product = create one file. No database, no CMS login, no code chang
 ---
 
 ## Open Items
-- **Tagline:** Exact wording to be finalized by Hans ("You can lead a mule to water — but you can't make him work cheap." is a placeholder)
+- **Tagline:** Confirmed as *"You can lead a mule to water, but you can't make him drink."*
 - **Email address:** Hans to provide business email for order notifications (or use an existing personal email)
 - **Square account:** Hans to create a free Square account at square.com before payment links can be generated
 - **GitHub account:** A free GitHub account is required; Cloudflare Pages deploys automatically from a GitHub repo whenever code is pushed
