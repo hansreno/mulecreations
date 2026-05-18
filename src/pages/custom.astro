@@ -18,6 +18,8 @@ import Footer from '../components/Footer.astro';
         </ol>
       </div>
 
+      <p class="required-note"><span aria-hidden="true">*</span> Required fields</p>
+
       <form id="order-form" class="order-form" novalidate>
 
         <div class="form-group">
@@ -92,18 +94,18 @@ import Footer from '../components/Footer.astro';
           </div>
           <div class="form-group">
             <label for="fulfillment">Pickup or shipping? <span aria-hidden="true">*</span></label>
-            <select id="fulfillment" name="fulfillment" required>
+            <select id="fulfillment" name="fulfillment" required aria-required="true">
               <option value="Local pickup (Herriman, UT)">Local pickup — Herriman, UT</option>
               <option value="Shipping">I need it shipped</option>
             </select>
           </div>
           <div class="form-group">
             <label for="customerName">Your name <span aria-hidden="true">*</span></label>
-            <input type="text" id="customerName" name="name" required autocomplete="name" />
+            <input type="text" id="customerName" name="name" required aria-required="true" autocomplete="name" />
           </div>
           <div class="form-group">
             <label for="customerEmail">Your email <span aria-hidden="true">*</span></label>
-            <input type="email" id="customerEmail" name="email" required autocomplete="email" />
+            <input type="email" id="customerEmail" name="email" required aria-required="true" autocomplete="email" />
           </div>
           <div class="form-group">
             <label for="phone">Phone (optional)</label>
@@ -136,6 +138,7 @@ import Footer from '../components/Footer.astro';
   }
   .process p { font-weight: 600; margin-bottom: 0.5rem; }
   .process ol { color: var(--color-text-muted); padding-left: 1.25rem; line-height: 2; }
+  .required-note { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 1rem; }
   .order-form { max-width: 600px; display: flex; flex-direction: column; gap: 1.25rem; }
   .conditional { display: flex; flex-direction: column; gap: 1.25rem; }
   #shared { display: flex; flex-direction: column; gap: 1.25rem; }
@@ -175,13 +178,19 @@ import Footer from '../components/Footer.astro';
   function showFields(itemType: string) {
     Object.values(conditionalMap).forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.hidden = true;
+      if (el) {
+        el.hidden = true;
+        el.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('textarea, input').forEach(f => f.removeAttribute('required'));
+      }
     });
     if (conditionalMap[itemType]) {
       const el = document.getElementById(conditionalMap[itemType]);
-      if (el) el.hidden = false;
+      if (el) {
+        el.hidden = false;
+        el.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('textarea, input').forEach(f => f.setAttribute('required', ''));
+      }
     }
-    shared.hidden = !itemType;
+    if (shared) shared.hidden = !itemType;
   }
 
   itemTypeSelect?.addEventListener('change', () => showFields(itemTypeSelect.value));
@@ -189,6 +198,11 @@ import Footer from '../components/Footer.astro';
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!submitBtn || !formStatus) return;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      submitBtn.disabled = false;
+      return;
+    }
     submitBtn.disabled = true;
     formStatus.textContent = 'Sending…';
     formStatus.className = 'form-status';
@@ -205,7 +219,7 @@ import Footer from '../components/Footer.astro';
         throw new Error(json.error || 'Submission failed');
       }
     } catch {
-      formStatus.textContent = 'Something went wrong. Please try again or contact directly.';
+      formStatus.textContent = 'Something went wrong. Please try again or email orders@mulecreations.com directly.';
       formStatus.className = 'form-status error';
       submitBtn.disabled = false;
     }

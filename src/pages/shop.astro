@@ -15,13 +15,15 @@ const categories = ['All', ...new Set(allProducts.map(p => p.data.category))];
       <h1>Shop</h1>
       <p class="sub">Local pickup in Herriman, UT. Shipping available — contact for rates.</p>
 
-      <div class="filter-bar" id="filter-bar">
-        {categories.map(cat => (
-          <button class:list={['filter-btn', { active: cat === 'All' }]} data-category={cat}>
-            {cat}
-          </button>
-        ))}
-      </div>
+      {allProducts.length > 0 && (
+        <div class="filter-bar" id="filter-bar">
+          {categories.map(cat => (
+            <button class:list={['filter-btn', { active: cat === 'All' }]} data-category={cat}>
+              {cat}
+            </button>
+          ))}
+        </div>
+      )}
 
       {allProducts.length === 0
         ? <p class="empty">New items coming soon. <a href="/custom">Request custom work.</a></p>
