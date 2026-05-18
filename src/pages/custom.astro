@@ -34,15 +34,16 @@ import Footer from '../components/Footer.astro';
         </div>
 
         <div class="conditional" id="fields-tree" hidden>
+          <p class="ring-hint">Traditionally: parents' names on the bottom ring (the roots), children's names on the top ring (the branches). But it's your design — put whatever means the most to you.</p>
           <div class="form-group">
             <label for="tol-top">Top ring text <span aria-hidden="true">*</span></label>
             <input type="text" id="tol-top" name="topRingText"
-              placeholder="e.g. The Smith Family" />
+              placeholder="e.g. Kids: Emma, Jake, Lily" />
           </div>
           <div class="form-group">
             <label for="tol-bottom">Bottom ring text <span aria-hidden="true">*</span></label>
             <input type="text" id="tol-bottom" name="bottomRingText"
-              placeholder="e.g. Est. 2024" />
+              placeholder="e.g. John & Sarah Smith" />
           </div>
         </div>
 
@@ -146,6 +147,8 @@ import Footer from '../components/Footer.astro';
   .required-note { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 1rem; }
   .order-form { max-width: 600px; display: flex; flex-direction: column; gap: 1.25rem; }
   .conditional { display: flex; flex-direction: column; gap: 1.25rem; }
+  .conditional[hidden] { display: none; }
+  .ring-hint { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; background: var(--color-card); border-left: 3px solid var(--color-accent); padding: 0.75rem 1rem; border-radius: var(--radius); }
   #shared { display: flex; flex-direction: column; gap: 1.25rem; }
   #shared[hidden] { display: none; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -199,6 +202,14 @@ import Footer from '../components/Footer.astro';
   }
 
   itemTypeSelect?.addEventListener('change', () => showFields(itemTypeSelect.value));
+
+  // Auto-select item type from URL param e.g. /custom?item=tree
+  const params = new URLSearchParams(window.location.search);
+  const itemParam = params.get('item');
+  if (itemParam === 'tree' && itemTypeSelect) {
+    itemTypeSelect.value = 'Tree of Life';
+    showFields('Tree of Life');
+  }
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
