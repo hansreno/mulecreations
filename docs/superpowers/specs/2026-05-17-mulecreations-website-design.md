@@ -43,19 +43,48 @@ MuleCreations.com is a woodworking and CNC creation business website for Hans Re
 
 ### 3. Custom Orders (`/custom`)
 - Intro: explain the custom process — submit the form, Hans replies with a quote, down payment required to begin, balance due on completion
-- **Questionnaire fields:**
-  1. Item type (select: Tree of Life, Religious/Scripture Plaque, Personalized Sign, Storage/Toy Box, Display Stand, Pet Tag, Other)
-  2. Size / dimensions preference (text — e.g., "roughly 12x16 inches")
-  3. Wood type preference (select: No preference, Cedar, Redwood, Cherry, Walnut, Pine, Other)
-  4. Personalization text (textarea — names, dates, scripture references, quotes)
-  5. Occasion (select: Gift, Home Decor, Religious, Anniversary, Birthday, Christmas, Other)
-  6. Budget range (select: Under $50, $50–$100, $100–$200, $200+, Not sure)
-  7. Needed by date (date field — optional)
-  8. Pickup or shipping? (radio: Local pickup in Herriman UT / Need it shipped)
-  9. Your name (text)
-  10. Your email (email)
-  11. Phone number (text — optional)
-  12. Additional details (textarea — anything else to describe the vision)
+- **Step 1 — Item type selector:** Customer picks what they want made. Based on their selection, a tailored form appears (no irrelevant questions)
+- Each product type has its own minimal questionnaire — only ask what Hans actually needs to know for that item
+
+**Tree of Life** (HDF, fixed size — only personalization varies):
+  1. Personalization text (textarea — names, dates, quotes to appear around the tree)
+  2. Occasion (select: Gift, Home Decor, Religious, Anniversary, Birthday, Christmas, Other)
+  3. Needed by date (date field — optional)
+  4. Pickup or shipping? (radio: Local pickup in Herriman UT / Need it shipped)
+  5. Your name (text)
+  6. Your email (email)
+  7. Additional details (textarea — optional)
+
+**Religious / Scripture Plaque:**
+  1. Scripture reference or text (textarea)
+  2. Size preference (text — optional, e.g., "roughly 12×16")
+  3. Occasion (select)
+  4. Needed by date (optional)
+  5. Pickup or shipping?
+  6. Your name + email
+  7. Additional details
+
+**Personalized Sign:**
+  1. Text to display (textarea)
+  2. Approximate size (text — optional)
+  3. Occasion (select)
+  4. Needed by date (optional)
+  5. Pickup or shipping?
+  6. Your name + email
+  7. Additional details
+
+**Everything Else (Storage, Stands, Pet Tags, Other):**
+  1. Describe what you're looking for (textarea)
+  2. Approximate size / dimensions (text — optional)
+  3. Occasion (select)
+  4. Budget range (select: Under $50, $50–$100, $100–$200, $200+, Not sure)
+  5. Needed by date (optional)
+  6. Pickup or shipping?
+  7. Your name + email
+  8. Phone number (optional)
+  9. Additional details
+
+- **Adding new product questionnaires:** Each questionnaire is defined in a config file — as new product types are developed, a new form config can be added without rebuilding the page
 - On submit: Cloudflare Worker formats answers into a structured email and delivers to Hans's inbox
 - Confirmation page shown to customer: "Got it! Hans will be in touch within 1–2 business days."
 - Hans replies from his regular email; sends a Square payment link for the deposit to begin work
@@ -63,7 +92,7 @@ MuleCreations.com is a woodworking and CNC creation business website for Hans Re
 ### 4. Portfolio / Gallery (`/portfolio`)
 - Masonry or uniform grid of photos of past work
 - Items do NOT need prices or "Buy Now" — this is a credibility/inspiration page
-- Short captions: item name + material (e.g., "Tree of Life — walnut, 14×18"")
+- Short captions: item name + material (e.g., "Tree of Life — HDF", "Toy Box — redwood & cedar")
 - Organized by category tabs or simple visual grouping
 - Photos stored in `public/images/portfolio/`
 
