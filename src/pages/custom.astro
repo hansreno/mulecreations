@@ -35,9 +35,14 @@ import Footer from '../components/Footer.astro';
 
         <div class="conditional" id="fields-tree" hidden>
           <div class="form-group">
-            <label for="tol-text">Personalization text <span aria-hidden="true">*</span></label>
-            <textarea id="tol-text" name="personalizationText" rows="3"
-              placeholder="Names, dates, or quotes to appear around the tree"></textarea>
+            <label for="tol-top">Top ring text <span aria-hidden="true">*</span></label>
+            <input type="text" id="tol-top" name="topRingText"
+              placeholder="e.g. The Smith Family" />
+          </div>
+          <div class="form-group">
+            <label for="tol-bottom">Bottom ring text <span aria-hidden="true">*</span></label>
+            <input type="text" id="tol-bottom" name="bottomRingText"
+              placeholder="e.g. Est. 2024" />
           </div>
         </div>
 

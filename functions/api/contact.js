@@ -27,7 +27,8 @@ export async function onRequestPost(context) {
 
   const body = buildEmailBody([
     ['Item Type', itemType],
-    ['Personalization Text', formData.get('personalizationText')],
+    ['Top Ring Text', formData.get('topRingText')],
+    ['Bottom Ring Text', formData.get('bottomRingText')],
     ['Scripture Text', formData.get('scriptureText')],
     ['Sign Text', formData.get('signText')],
     ['Other Description', formData.get('otherDescription')],
