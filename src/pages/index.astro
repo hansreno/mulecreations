@@ -35,7 +35,8 @@ const featured = (await getCollection('products', ({ data }) => data.featured &&
           {featured.map((p) => (
             <ProductCard title={p.data.title} category={p.data.category} price={p.data.price}
               description={p.data.description} image={p.data.image}
-              squareLink={p.data.squareLink} inStock={p.data.inStock} />
+              squareLink={p.data.squareLink} inStock={p.data.inStock}
+              isDeposit={p.data.isDeposit} totalPrice={p.data.totalPrice} />
           ))}
         </div>
         <div style="text-align:center;margin-top:2rem">

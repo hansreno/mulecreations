@@ -7,4 +7,6 @@ image: "/images/products/tree-of-life.jpg"
 squareLink: "https://square.link/u/REPLACE_WITH_REAL_LINK"
 inStock: true
 featured: true
+isDeposit: true
+totalPrice: 180
 ---

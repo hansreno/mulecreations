@@ -12,6 +12,8 @@ const products = defineCollection({
     squareLink: z.string().url(),
     inStock: z.boolean().default(true),
     featured: z.boolean().default(false),
+    isDeposit: z.boolean().default(false),
+    totalPrice: z.number().optional(),
   }),
 });
 
