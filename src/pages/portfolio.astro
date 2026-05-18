@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PortfolioCard from '../components/PortfolioCard.astro';
+import { getCollection } from 'astro:content';
+const items = await getCollection('portfolio');
+---
+<BaseLayout title="Portfolio" description="Past work from Mule Creations — signs, Trees of Life, plaques, and more.">
+  <Nav slot="nav" />
+  <section>
+    <div class="container">
+      <h1>Portfolio</h1>
+      <p class="sub">A look at past work. Like something? <a href="/custom">Request it custom.</a></p>
+      {items.length === 0
+        ? <p class="empty">Photos coming soon.</p>
+        : (
+          <div class="grid">
+            {items.map(i => (
+              <PortfolioCard title={i.data.title} material={i.data.material}
+                image={i.data.image} description={i.data.description} />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  h1 { margin-bottom: 0.5rem; }
+  .sub { color: var(--color-text-muted); margin-bottom: 2.5rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+  .empty { color: var(--color-text-muted); padding: 3rem 0; }
+</style>

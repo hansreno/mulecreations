@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="About" description="The story behind Mule Creations — handcrafted woodwork from Herriman, Utah.">
+  <Nav slot="nav" />
+  <section>
+    <div class="container about-inner">
+      <div class="about-logo">
+        <img src="/images/logo/TheGuidedMule.svg" alt="The Guided Mule illustration" width="280" height="140" />
+      </div>
+      <div class="about-content">
+        <h1>The Mule Story</h1>
+        <p>
+          [Hans — write your story here. Tell people about your "Mule" nickname, the Alaska fishing trips,
+          how your fishing buddies started calling you that, and what it means to you.]
+        </p>
+        <h2>The Work</h2>
+        <p>
+          [Describe how you got into woodworking, when you got the CNC machine, what you've built,
+          and why you love making Trees of Life especially.]
+        </p>
+        <h2>The Logo</h2>
+        <p>
+          The logo says it all: you can lead a mule to water, but you can't make him drink.
+          Everything here is made on my terms — stubborn about quality, stubborn about craft.
+        </p>
+        <h2>Where to Find Me</h2>
+        <p>
+          Based in Herriman, Utah. Local pickup available. I also ship — just ask.
+          For custom work, <a href="/custom">start here</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .about-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+  .about-logo img { width: 100%; max-width: 280px; height: auto; }
+  .about-content h1 { margin-bottom: 1.5rem; }
+  .about-content h2 { margin-top: 2rem; margin-bottom: 0.75rem; color: var(--color-accent); font-size: 1.25rem; }
+  .about-content p { color: var(--color-text-muted); line-height: 1.8; }
+  @media (max-width: 640px) { .about-inner { grid-template-columns: 1fr; gap: 2rem; } }
+</style>
