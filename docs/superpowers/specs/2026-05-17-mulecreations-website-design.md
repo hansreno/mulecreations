@@ -153,7 +153,7 @@ Dark background with warm wood tones. The logo is the star. Feels like a real cr
 ### Domain Setup
 1. Log into GoDaddy → change nameservers to Cloudflare's (provided during Cloudflare zone setup)
 2. Add MuleCreations.com as a zone in Cloudflare (free plan)
-3. Cloudflare Pages deployment is linked to the GitHub repo; Cloudflare assigns a `*.pages.dev` URL until the custom domain is attached
+3. Cloudflare account created under Reno Creations (sole proprietor); Cloudflare Pages deployment linked to GitHub repo at github.com/hansreno; Cloudflare assigns a `*.pages.dev` URL until the custom domain is attached
 
 ### Content Management (Products)
 Each product in the shop is a Markdown file at `src/content/products/<slug>.md`:
@@ -216,7 +216,7 @@ Adding a new product = create one file. No database, no CMS login, no code chang
 - **Tagline:** Confirmed as *"You can lead a mule to water, but you can't make him drink."*
 - **Email address:** Hans to provide business email for order notifications (or use an existing personal email)
 - **Square account:** Hans to create a free Square account at square.com before payment links can be generated
-- **GitHub account:** A free GitHub account is required; Cloudflare Pages deploys automatically from a GitHub repo whenever code is pushed
+- **GitHub account:** hansreno — Cloudflare Pages will deploy automatically from a GitHub repo under this account
 - **Product photos:** Hans to provide photos for all shop items and portfolio pieces
 - **About page content:** Hans to write or dictate the Mule origin story in his own words
 - **Deposit percentage:** Hans to decide his standard deposit amount per order type (30–50% is typical for custom craftwork)
