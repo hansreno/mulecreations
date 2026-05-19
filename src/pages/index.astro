@@ -59,6 +59,14 @@ const featured = (await getCollection('products', ({ data }) => data.featured &&
     </div>
   </section>
 
+  <section class="prev-work">
+    <div class="container" style="max-width:700px">
+      <h2>See What's Possible</h2>
+      <p>Trees of Life, custom signs, dog tags, holiday decor — take a look at what's come out of the shop.</p>
+      <a href="/portfolio" class="btn btn-outline" style="margin-top:1.5rem;display:inline-block">Browse Previous Work</a>
+    </div>
+  </section>
+
   <section class="who">
     <div class="container" style="max-width:700px">
       <h2>Who Is Mule?</h2>
@@ -84,6 +92,8 @@ const featured = (await getCollection('products', ({ data }) => data.featured &&
   .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
   .cta-inner h2 { margin-bottom: 0.5rem; }
   .cta-inner p { color: var(--color-text-muted); }
+  .prev-work h2 { margin-bottom: 1rem; }
+  .prev-work p { color: var(--color-text-muted); font-size: 1.05rem; }
   .who h2 { margin-bottom: 1rem; }
   .who p { color: var(--color-text-muted); font-size: 1.05rem; }
 </style>
