@@ -1,6 +1,6 @@
 ---
 interface Props {
-  title: string; material: string; image: string; description?: string;
+  title: string; image: string; material?: string; description?: string;
 }
 const { title, material, image, description } = Astro.props;
 ---
@@ -10,7 +10,7 @@ const { title, material, image, description } = Astro.props;
   </div>
   <figcaption>
     <span class="title">{title}</span>
-    <span class="material">{material}</span>
+    {material && <span class="material">{material}</span>}
     {description && <p class="desc">{description}</p>}
   </figcaption>
 </figure>

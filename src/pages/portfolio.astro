@@ -17,8 +17,8 @@ const items = await getCollection('portfolio');
         : (
           <div class="grid">
             {items.map(i => (
-              <PortfolioCard title={i.data.title} material={i.data.material}
-                image={i.data.image} description={i.data.description} />
+              <PortfolioCard title={i.data.title} image={i.data.image}
+                material={i.data.material} description={i.data.description} />
             ))}
           </div>
         )
