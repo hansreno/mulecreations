@@ -3,8 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import PortfolioCard from '../components/PortfolioCard.astro';
-import { getCollection } from 'astro:content';
-const items = await getCollection('portfolio');
+import items from '../data/portfolio.json';
 ---
 <BaseLayout title="Portfolio" description="Past work from Mule Creations — signs, Trees of Life, plaques, and more.">
   <Nav slot="nav" />
@@ -17,8 +16,9 @@ const items = await getCollection('portfolio');
         : (
           <div class="grid">
             {items.map(i => (
-              <PortfolioCard title={i.data.title} image={i.data.image}
-                material={i.data.material} description={i.data.description} />
+              <PortfolioCard title={i.title} image={i.image}
+                material={i.material} description={i.description}
+                gallery={i.gallery} />
             ))}
           </div>
         )
