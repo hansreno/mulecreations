@@ -1,6 +1,73 @@
 [
   {
-    "title": "Personalized Tree of Life",
-    "image": "/images/portfolio/tree-of-life-sample.jpg"
+    "title": "Chiasmus",
+    "image": "/images/portfolio/chaismus.jpg"
+  },
+  {
+    "title": "Christmas Decor",
+    "image": "/images/portfolio/christmas-decor.jpg",
+    "gallery": [
+      "/images/portfolio/christmas-org.jpg"
+    ]
+  },
+  {
+    "title": "Cupcake Stand",
+    "image": "/images/portfolio/cupcake1.jpg",
+    "gallery": [
+      "/images/portfolio/cupcake2.jpg"
+    ]
+  },
+  {
+    "title": "Custom Maple Piece",
+    "image": "/images/portfolio/custom-maple.jpg"
+  },
+  {
+    "title": "Custom Signs",
+    "image": "/images/portfolio/custom-signs.jpg"
+  },
+  {
+    "title": "Custom Trek Sign",
+    "image": "/images/portfolio/custom-trek-sign-large.jpg",
+    "gallery": [
+      "/images/portfolio/custom-trek-sign-preview.jpg"
+    ]
+  },
+  {
+    "title": "Trek Trading Post Signs",
+    "image": "/images/portfolio/custom-trek-trading-post1.jpg",
+    "gallery": [
+      "/images/portfolio/custom-trek-trading-post2.jpg",
+      "/images/portfolio/custom-trek-trading-post3.jpg"
+    ]
+  },
+  {
+    "title": "Dog Tags",
+    "image": "/images/portfolio/dog-tag1.jpg",
+    "gallery": [
+      "/images/portfolio/dog-tag2.jpg"
+    ]
+  },
+  {
+    "title": "Family Proclamation",
+    "image": "/images/portfolio/family-proc.jpg"
+  },
+  {
+    "title": "Izapa",
+    "image": "/images/portfolio/izapa.jpg"
+  },
+  {
+    "title": "Laser Card",
+    "image": "/images/portfolio/laser-card.jpg"
+  },
+  {
+    "title": "A Place Called Naholm",
+    "image": "/images/portfolio/place-called-naholm.jpg"
+  },
+  {
+    "title": "Plant Holder",
+    "image": "/images/portfolio/plant-holder-1.jpg",
+    "gallery": [
+      "/images/portfolio/plant-holder-2.jpg"
+    ]
   }
 ]
