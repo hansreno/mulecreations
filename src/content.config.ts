@@ -10,6 +10,8 @@ const products = defineCollection({
     description: z.string(),
     image: z.string(),
     squareLink: z.string().url(),
+    squareShipLink: z.string().url().optional(),
+    shipPrice: z.number().optional(),
     inStock: z.boolean().default(true),
     featured: z.boolean().default(false),
     isDeposit: z.boolean().default(false),

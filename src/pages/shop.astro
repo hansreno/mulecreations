@@ -35,7 +35,8 @@ const categories = ['All', ...new Set(allProducts.map(p => p.data.category))];
                 <ProductCard title={p.data.title} category={p.data.category} price={p.data.price}
                   description={p.data.description} image={p.data.image}
                   squareLink={p.data.squareLink} inStock={p.data.inStock}
-                  isDeposit={p.data.isDeposit} totalPrice={p.data.totalPrice} buttonLabel={p.data.buttonLabel} gallery={p.data.gallery} />
+                  isDeposit={p.data.isDeposit} totalPrice={p.data.totalPrice} buttonLabel={p.data.buttonLabel} gallery={p.data.gallery}
+                  squareShipLink={p.data.squareShipLink} shipPrice={p.data.shipPrice} />
               </div>
             ))}
           </div>

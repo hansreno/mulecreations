@@ -3,8 +3,9 @@ interface Props {
   title: string; category: string; price: number;
   description: string; image: string; squareLink: string; inStock: boolean;
   isDeposit?: boolean; totalPrice?: number; buttonLabel?: string; gallery?: string[];
+  squareShipLink?: string; shipPrice?: number;
 }
-const { title, category, price, description, image, squareLink, inStock, isDeposit = false, totalPrice, buttonLabel, gallery } = Astro.props;
+const { title, category, price, description, image, squareLink, inStock, isDeposit = false, totalPrice, buttonLabel, gallery, squareShipLink, shipPrice } = Astro.props;
 const btnLabel = buttonLabel ?? (isDeposit ? 'Pay Deposit' : 'Buy Now');
 const allImages = [image, ...(gallery ?? [])];
 const cardId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
@@ -44,9 +45,14 @@ const cardId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '
         }
       </div>
       {inStock
-        ? <a href={squareLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            {btnLabel}
-          </a>
+        ? squareShipLink
+          ? <div class="btn-group">
+              <a href={squareLink} class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">Pick up — ${price}</a>
+              <a href={squareShipLink} class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Ship — ${shipPrice}</a>
+            </div>
+          : <a href={squareLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              {btnLabel}
+            </a>
         : <span class="btn btn-outline" aria-disabled="true">Sold Out</span>
       }
     </div>
@@ -105,6 +111,8 @@ const cardId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '
   .price-block { display: flex; flex-direction: column; gap: 0.15rem; }
   .price { font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-accent); font-weight: 700; }
   .deposit-note { font-size: 0.75rem; color: var(--color-text-muted); }
+  .btn-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .btn-sm { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
 </style>
 
 <script>
