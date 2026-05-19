@@ -1,8 +1,5 @@
 [
-  {
-    "title": "Chiasmus",
-    "image": "/images/portfolio/chaismus.jpg"
-  },
+
   {
     "title": "Christmas Decor",
     "image": "/images/portfolio/christmas-decor.jpg",
@@ -11,10 +8,21 @@
     ]
   },
   {
-    "title": "Cupcake Stand",
-    "image": "/images/portfolio/cupcake1.jpg",
+    "title": "Plant Holder",
+    "image": "/images/portfolio/plant-holder-1.jpg",
     "gallery": [
-      "/images/portfolio/cupcake2.jpg"
+      "/images/portfolio/plant-holder-2.jpg"
+    ]
+  },
+  {
+    "title": "Team Unguided",
+    "image": "/images/portfolio/unguided.jpg"
+  },
+  {
+    "title": "Cupcake Stand",
+    "image": "/images/portfolio/cupcake2.jpg",
+    "gallery": [
+      "/images/portfolio/cupcake1.jpg"
     ]
   },
   {
@@ -52,6 +60,10 @@
     "image": "/images/portfolio/family-proc.jpg"
   },
   {
+    "title": "Chiasmus",
+    "image": "/images/portfolio/chaismus.jpg"
+  },
+  {
     "title": "Izapa",
     "image": "/images/portfolio/izapa.jpg"
   },
@@ -63,11 +75,5 @@
     "title": "A Place Called Naholm",
     "image": "/images/portfolio/place-called-naholm.jpg"
   },
-  {
-    "title": "Plant Holder",
-    "image": "/images/portfolio/plant-holder-1.jpg",
-    "gallery": [
-      "/images/portfolio/plant-holder-2.jpg"
-    ]
-  }
+
 ]
