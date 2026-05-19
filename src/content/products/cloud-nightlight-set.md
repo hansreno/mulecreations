@@ -9,7 +9,7 @@ gallery:
   - "/images/products/clouds/cloud2.jpg"
   - "/images/products/clouds/cloud3.jpg"
   - "/images/products/clouds/cloud4.jpg"
-squareLink: "https://mulecreations.com/custom"
+squareLink: "https://square.link/u/7PoyXTNO"
 inStock: true
 featured: false
 sortOrder: 10
