@@ -10,6 +10,6 @@ gallery:
 squareLink: "https://square.link/u/Vr6EloVm"
 squareShipLink: "https://square.link/u/scdlyoYi"
 inStock: true
-featured: true
+featured: false
 sortOrder: 2
 ---

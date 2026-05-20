@@ -11,6 +11,6 @@ gallery:
   - "/images/products/clouds/cloud4.jpg"
 squareLink: "https://square.link/u/7PoyXTNO"
 inStock: true
-featured: false
+featured: true
 sortOrder: 10
 ---
