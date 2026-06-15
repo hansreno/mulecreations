@@ -63,26 +63,6 @@
     ]
   },
   {
-    "title": "Family Proclamation",
-    "image": "/images/portfolio/family-proc.jpg"
-  },
-  {
-    "title": "Chiasmus",
-    "image": "/images/portfolio/chaismus.jpg"
-  },
-  {
-    "title": "Izapa",
-    "image": "/images/portfolio/izapa.jpg"
-  },
-  {
-    "title": "Laser Card",
-    "image": "/images/portfolio/laser-card.jpg"
-  },
-  {
-    "title": "A Place Called Nahom",
-    "image": "/images/portfolio/place-called-naholm.jpg"
-  },
-  {
     "title": "Mudroom",
     "image": "/images/portfolio/mudroom-after.jpg",
     "gallery": [
@@ -132,6 +112,26 @@
   {
     "title": "Bookshelf",
     "image": "/images/portfolio/bookshelf.jpg"
+  },
+  {
+    "title": "Family Proclamation",
+    "image": "/images/portfolio/family-proc.jpg"
+  },
+  {
+    "title": "Chiasmus",
+    "image": "/images/portfolio/chaismus.jpg"
+  },
+  {
+    "title": "Izapa",
+    "image": "/images/portfolio/izapa.jpg"
+  },
+  {
+    "title": "Laser Card",
+    "image": "/images/portfolio/laser-card.jpg"
+  },
+  {
+    "title": "A Place Called Nahom",
+    "image": "/images/portfolio/place-called-naholm.jpg"
   }
 
 ]
