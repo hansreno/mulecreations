@@ -12,8 +12,6 @@
     "image": "/images/portfolio/plant-holder-1.jpg",
     "gallery": [
       "/images/portfolio/plant-holder-2.jpg",
-      "/images/portfolio/plantholder01.jpeg",
-      "/images/portfolio/plantholder02.jpeg",
       "/images/portfolio/plantholder03.jpeg",
       "/images/portfolio/plantholder04.jpg",
       "/images/portfolio/plantholder-empty.jpg"
@@ -25,11 +23,11 @@
   },
   {
     "title": "Cupcake Stand",
-    "image": "/images/portfolio/cupcake2.jpg",
+    "image": "/images/portfolio/cupcake-holder-front.jpg",
     "gallery": [
+      "/images/portfolio/cupcake2.jpg",
       "/images/portfolio/cupcake1.jpg",
       "/images/portfolio/cupcake-holder-modeling.jpg",
-      "/images/portfolio/cupcake-holder-front.jpg",
       "/images/portfolio/cupcake-holder-side.jpg",
       "/images/portfolio/cupcake-holder-together.jpg"
     ]
@@ -113,7 +111,7 @@
     "image": "/images/portfolio/cnc-beginnings.jpg"
   },
   {
-    "title": "Elf Shelf",
+    "title": "Elf Picnic Table",
     "image": "/images/portfolio/elf-shelf-pieces.jpg"
   },
   {
@@ -128,7 +126,7 @@
     "image": "/images/portfolio/harry-potter-sign.jpg"
   },
   {
-    "title": "Armrest",
+    "title": "Shelf",
     "image": "/images/portfolio/armrest01.jpg"
   },
   {

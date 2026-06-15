@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git -C \"C:\\\\AgenticAI\\\\MuleCreations\" add src/components/Nav.astro)",
+      "PowerShell(git -C \"C:\\\\AgenticAI\\\\MuleCreations\" commit -m \"feat: add Nav with mobile hamburger menu\")",
+      "PowerShell(git -C \"C:\\\\AgenticAI\\\\MuleCreations\" add src/components/Footer.astro)",
+      "PowerShell(git -C \"C:\\\\AgenticAI\\\\MuleCreations\" commit -m \"feat: add Footer\")",
+      "PowerShell(git -C \"C:\\\\AgenticAI\\\\MuleCreations\" add src/components/ProductCard.astro src/components/PortfolioCard.astro)",
+      "PowerShell(git -C \"C:\\\\AgenticAI\\\\MuleCreations\" commit -m \"feat: add ProductCard and PortfolioCard components\")",
+      "Bash(Get-ChildItem -Force)",
+      "Bash(Select-Object Name)",
+      "Bash(git -C \"C:\\\\AgenticAI\\\\MuleCreations\" diff --stat a60ff83..1d10ab3)"
+    ]
+  }
+}
