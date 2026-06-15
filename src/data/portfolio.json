@@ -11,7 +11,12 @@
     "title": "Plant Holder",
     "image": "/images/portfolio/plant-holder-1.jpg",
     "gallery": [
-      "/images/portfolio/plant-holder-2.jpg"
+      "/images/portfolio/plant-holder-2.jpg",
+      "/images/portfolio/plantholder01.jpeg",
+      "/images/portfolio/plantholder02.jpeg",
+      "/images/portfolio/plantholder03.jpeg",
+      "/images/portfolio/plantholder04.jpg",
+      "/images/portfolio/plantholder-empty.jpg"
     ]
   },
   {
@@ -22,7 +27,11 @@
     "title": "Cupcake Stand",
     "image": "/images/portfolio/cupcake2.jpg",
     "gallery": [
-      "/images/portfolio/cupcake1.jpg"
+      "/images/portfolio/cupcake1.jpg",
+      "/images/portfolio/cupcake-holder-modeling.jpg",
+      "/images/portfolio/cupcake-holder-front.jpg",
+      "/images/portfolio/cupcake-holder-side.jpg",
+      "/images/portfolio/cupcake-holder-together.jpg"
     ]
   },
   {
@@ -74,6 +83,57 @@
   {
     "title": "A Place Called Nahom",
     "image": "/images/portfolio/place-called-naholm.jpg"
+  },
+  {
+    "title": "Mudroom",
+    "image": "/images/portfolio/mudroom-after.jpg",
+    "gallery": [
+      "/images/portfolio/mudroom-construction.jpg"
+    ]
+  },
+  {
+    "title": "Window Seat",
+    "image": "/images/portfolio/windowseat.jpg"
+  },
+  {
+    "title": "Wonder Table",
+    "image": "/images/portfolio/wondertable-completed-table-set.jpg",
+    "gallery": [
+      "/images/portfolio/wondertable-completed-empty.jpg",
+      "/images/portfolio/wondertable-assembly.jpg",
+      "/images/portfolio/wondertable-creation.jpg"
+    ]
+  },
+  {
+    "title": "Ping Pong Holder",
+    "image": "/images/portfolio/pingpong-holder-dispenser.jpg"
+  },
+  {
+    "title": "CNC Beginnings",
+    "image": "/images/portfolio/cnc-beginnings.jpg"
+  },
+  {
+    "title": "Elf Shelf",
+    "image": "/images/portfolio/elf-shelf-pieces.jpg"
+  },
+  {
+    "title": "Cup Holder",
+    "image": "/images/portfolio/cupholder1.jpg",
+    "gallery": [
+      "/images/portfolio/cupholder24.jpg"
+    ]
+  },
+  {
+    "title": "Harry Potter Sign",
+    "image": "/images/portfolio/harry-potter-sign.jpg"
+  },
+  {
+    "title": "Armrest",
+    "image": "/images/portfolio/armrest01.jpg"
+  },
+  {
+    "title": "Bookshelf",
+    "image": "/images/portfolio/bookshelf.jpg"
   }
 
 ]
